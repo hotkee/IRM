@@ -1,0 +1,18 @@
+# error parsing inception v3 file: 64MB python protobuf parsing limit #582
+# https://github.com/tensorflow/tensorflow/issues/582
+#
+# [libprotobuf ERROR google/protobuf/src/google/protobuf/io/coded_stream.cc:207] A protocol message was rejected because it was too big (more than 67108864 bytes).  To increase the limit (or to disable these warnings), see CodedInputStream::SetTotalBytesLimit() in google/protobuf/io/coded_stream.h.
+# Traceback (most recent call last):
+#   File "classify_image.py", line 214, in <module>
+#     tf.app.run()
+#   File "/home/linchaoz/.local/lib/python2.7/site-packages/tensorflow/python/platform/default/_app.py", line 30, in run
+#     sys.exit(main(sys.argv))
+#   File "classify_image.py", line 210, in main
+#     run_inference_on_image(image)
+#   File "classify_image.py", line 160, in run_inference_on_image
+#     create_graph()
+#   File "classify_image.py", line 142, in create_graph
+#     graph_def.ParseFromString(f.read())
+#  google.protobuf.message.DecodeError: Error parsing message
+
+export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
