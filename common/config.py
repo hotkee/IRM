@@ -31,11 +31,7 @@ LABEL_PATH = os.path.join(MODEL_DIR, 'imagenet_2012_challenge_label_map_proto.pb
 UID_PATH = os.path.join(MODEL_DIR, 'imagenet_synset_to_human_label_map.txt')
 
 # Classifier API path
-IMAGENET_CLASSIFIER_API = '/team-gitmo/services/imagenet/classify'
+IMAGENET_CLASSIFIER_API = '/team-gitmo/services/image/classify'
 
 # Display this many predictions
 NUM_TOP_PREDICTIONS = 1
-
-# pylint: disable=line-too-long
-DATA_URL = 'http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz'
-# pylint: enable=line-too-long

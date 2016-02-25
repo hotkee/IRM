@@ -5,14 +5,14 @@ from flask import Flask
 from flask_restful import Api
 
 from resources.classifier_api import ClassifierAPI
-from common import vars
+from common import config
 
 # Build app
 app = Flask(__name__)
 api = Api(app)
 
 # Add resources
-api.add_resource(ClassifierAPI, vars.IMAGENET_CLASSIFIER_API)
+api.add_resource(ClassifierAPI, config.IMAGENET_CLASSIFIER_API)
 
 
 @app.before_first_request
@@ -22,7 +22,7 @@ def create_graph():
     """
 
     # Creates graph from saved graph_def.pb.
-    with tf.gfile.FastGFile(os.path.join(vars.MODEL_DIR, 'classify_image_graph_def.pb'), 'rb') as f:
+    with tf.gfile.FastGFile(os.path.join(config.MODEL_DIR, 'classify_image_graph_def.pb'), 'rb') as f:
         graph_def = tf.GraphDef()
         graph_def.ParseFromString(f.read())
 

@@ -6,7 +6,7 @@ import numpy as np
 import tensorflow as tf
 from flask_restful import request, Resource
 
-from common import vars
+from common import config
 from common.node_lookup import NodeLookup
 from common.prediction import Prediction
 
@@ -98,7 +98,7 @@ class ClassifierAPI(Resource):
             predictions = np.squeeze(predictions)
 
             # Create json response
-            top_k = predictions.argsort()[-vars.NUM_TOP_PREDICTIONS:][::-1]
+            top_k = predictions.argsort()[-config.NUM_TOP_PREDICTIONS:][::-1]
             for node_id in top_k:
                 human_string = self.node_lookup.id_to_string(node_id)
                 score = predictions[node_id]

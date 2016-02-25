@@ -6,7 +6,7 @@ import re
 
 import tensorflow as tf
 
-from common import vars
+from common import config
 
 
 class NodeLookup(object):
@@ -16,9 +16,9 @@ class NodeLookup(object):
                  label_lookup_path=None,
                  uid_lookup_path=None):
         if not label_lookup_path:
-            label_lookup_path = vars.LABEL_PATH
+            label_lookup_path = config.LABEL_PATH
         if not uid_lookup_path:
-            uid_lookup_path = vars.UID_PATH
+            uid_lookup_path = config.UID_PATH
         self.node_lookup = self.load(label_lookup_path, uid_lookup_path)
 
     def load(self, label_lookup_path, uid_lookup_path):
