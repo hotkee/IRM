@@ -1,16 +1,25 @@
-FROM python:2.7.11
+FROM python:3.4
+
 MAINTAINER <matt.j.alexander@utah.edu>
 
+# See bugs.txt for explanation
 ENV PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION python
 
-RUN pip install --upgrade pip
-RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl
-RUN pip install flask-restful
+# Install PIP, TensorFlow, Flask-RESTful
+RUN pip3 install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp34-none-linux_x86_64.whl
+RUN pip3 install flask-restful
 
-COPY . /imagenet/
+# Copy application to appropriate directory
+COPY . /IRM/
 
-ADD http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz /imagenet/models/
+# If model not available locally pull down
+WORKDIR /IRM/scripts
+RUN chmod +x install-inception-v3.sh
+RUN ./install-inception-v3.sh
 
+# Expose flask port
 EXPOSE 5000
 
-CMD ["python", "/imagenet/tpc.py"]
+# Run app
+WORKDIR /IRM
+CMD ["python", "irm.py"]

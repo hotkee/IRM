@@ -1,11 +1,11 @@
 import unittest
 
-import IRM
+import irm
 
 
 class TestClassifierAPI(unittest.TestCase):
     def setUp(self):
-        self.app = IRM.app.test_client()
+        self.app = irm.app.test_client()
 
     def test_full_classification_upload(self):
         files = {'file': (open('../images/cropped_panda.jpg', 'rb'), '21T03NAPE7L._AA75_.jpg')}

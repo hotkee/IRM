@@ -1,5 +1,15 @@
+##
+# Model directory files
+##
+
 *.pb
 *.pbtxt
 *.pyc
 imagenet_synset_to_human_label_map.txt
+*.tgz
+
+##
+# IntelliJ
+##
+
 .idea/

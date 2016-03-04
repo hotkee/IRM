@@ -1,0 +1,6 @@
+irm:
+  build: .
+  restart: always
+  expose: ["5000"]
+  ports:
+    - "5000:5000"
