@@ -22,7 +22,7 @@ RELATIVE_MODEL_DIR = 'models'
 MODEL_DIR = os.path.join(os.path.dirname(__file__), os.pardir, RELATIVE_MODEL_DIR)
 
 # Classification model path
-CLASSIFIED_MODEL_PATH = os.path.join(MODEL_DIR, 'classify_image_graph_def.pb')
+MODEL_PATH = os.path.join(MODEL_DIR, 'classify_image_graph_def.pb')
 
 # Label path
 LABEL_PATH = os.path.join(MODEL_DIR, 'imagenet_2012_challenge_label_map_proto.pbtxt')
