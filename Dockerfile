@@ -18,7 +18,7 @@ RUN chmod +x install-inception-v3.sh
 RUN ./install-inception-v3.sh
 
 # Expose flask port
-EXPOSE 5000
+EXPOSE 2475
 
 # Run app
 WORKDIR /IRM
