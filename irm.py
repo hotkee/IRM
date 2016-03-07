@@ -12,6 +12,7 @@ https://tensorflow.org/tutorials/image_recognition/
 """
 
 import os
+import traceback
 
 import numpy as np
 import tensorflow as tf
@@ -64,12 +65,13 @@ def post():
             human_string = node_lookup.id_to_string(top_k[0])
             score = predictions[top_k[0]]
             return jsonify(Prediction(human_string, score).jsonify())
-        except:
-            return jsonify({'error': 'error occured while processing file'}), 500
+        except Exception as e:
+            return jsonify({'error': traceback.format_exc(e)}), 500
     else:
         return jsonify({'error': 'uploaded file must be in jpg/jpeg format and not null'}), 400
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 2475))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    port = int(os.environ.get('PORT', 80))
+    debug = bool(os.environ.get('DEBUG', False))
+    app.run(host='0.0.0.0', port=port, debug=debug)

@@ -34,4 +34,4 @@ UID_PATH = os.path.join(MODEL_DIR, 'imagenet_synset_to_human_label_map.txt')
 IMAGE_CLASSIFIER_API = '/team-gitmo/services/image/classify'
 
 # Display this many predictions
-NUM_TOP_PREDICTIONS = 1
+NUM_TOP_PREDICTIONS = os.environ.get('NUM_TOP_PREDICTIONS', 1)
